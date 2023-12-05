@@ -1,4 +1,8 @@
 # Python to Linux Web App on Azure
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
 # Build your Python project and deploy it to Azure as a Linux Web App.
 # Change python version to one thats appropriate for your application.
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
