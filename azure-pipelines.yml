@@ -42,15 +42,8 @@ steps:
     pip install -r requirements.txt
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
-- script: |
-    pip freeze
-  displayName: 'Display installed packages'
-
-- script: |
-    pushd '$(projectRoot)'
-    python manage.py migrate
-  displayName: 'Apply migrations'
-
+- script: env | sort
+  displayName: 'Display env variables'
 - script: |
     pushd '$(projectRoot)'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
