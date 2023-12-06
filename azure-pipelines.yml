@@ -38,8 +38,6 @@ steps:
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
 
 - script: |
-    python -m venv $(Build.SourcesDirectory)/antenv
-    source $(Build.SourcesDirectory)/antenv/bin/activate
     python -m pip install --upgrade pip setuptools wheel
     pip install django
     pip install -r requirements.txt
