@@ -45,6 +45,12 @@ steps:
 - script: |
     pip freeze
   displayName: 'Display installed packages'
+
+- script: |
+    pushd '$(projectRoot)'
+    python manage.py migrate
+  displayName: 'Apply migrations'
+
 - script: |
     pushd '$(projectRoot)'
     python manage.py test --testrunner xmlrunner.extra.djangotestrunner.XMLTestRunner --no-input
