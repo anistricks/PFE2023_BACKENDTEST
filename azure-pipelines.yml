@@ -36,11 +36,12 @@ steps:
       project_location = path.dirname(path.abspath(manage_py))
       print('Found Django project in', project_location)
       print('##vso[task.setvariable variable=projectRoot]{}'.format(project_location))
+
 - script: |
-    source antenv/bin/activate  
-  displayName: 'Activate virtual environment'
-- script: |
+    python -m venv antenv
+    source antenv/bin/activate
     python -m pip install --upgrade pip setuptools wheel
+    pip install django
     pip install -r requirements.txt
     pip install unittest-xml-reporting
   displayName: 'Install prerequisites'
